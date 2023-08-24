@@ -4,7 +4,7 @@ public class Pizza {
 
     private int price;
     private Boolean isVeg;
-    private String bill;
+    private String bill="";
     private boolean isCheese = false;
     private boolean isTopping = false;
     private boolean isAway = false;
@@ -14,6 +14,7 @@ public class Pizza {
         // your code goes here
         if(isVeg) this.price = 300;
         else this.price = 400;
+//        this.bill+="";
     }
 
     public int getPrice(){
@@ -37,22 +38,22 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        System.out.println("Base Price Of The Pizza:"+this.getPrice());
+        bill+="Base Price Of The Pizza:"+this.getPrice()+"\n";
         if(this.isVeg)
         {
             if(this.isCheese)
             {
                 this.price+=80;
-                System.out.println("Extra Cheese Added:"+80);
+                bill+="Extra Cheese Added:80\n";
             }
             if(this.isTopping)
             {
-                System.out.println("Extra Toppings Added:"+70);
+                bill+="Extra Toppings Added:70\n";
                 this.price+=70;
             }
             if(this.isAway)
             {
-                System.out.println("Paperbag Added:"+20);
+                bill+="Paperbag Added:20\n";
                 this.price+=20;
             }
         }
@@ -61,19 +62,20 @@ public class Pizza {
             if(this.isCheese)
             {
                 this.price+=80;
-                System.out.println("Extra Cheese Added:"+80);
+                bill+="Extra Cheese Added:80\n";
             }
             if(this.isTopping)
             {
-                System.out.println("Extra Toppings Added:"+120);
-                this.price+=120;
+                bill+="Extra Toppings Added:120\n";
+                this.price+=70;
             }
             if(this.isAway)
             {
-                System.out.println("Paperbag Added:"+20);
+                bill+="Paperbag Added:20\n";
                 this.price+=20;
             }
         }
-        return "Total Price:"+this.price;
+        bill+="Total Price:"+this.price+"\n";
+        return bill;
     }
 }
