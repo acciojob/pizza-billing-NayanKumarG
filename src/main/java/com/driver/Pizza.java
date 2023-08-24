@@ -8,6 +8,7 @@ public class Pizza {
     private boolean isCheese = false;
     private boolean isTopping = false;
     private boolean isAway = false;
+    private boolean bigenerated = false;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -36,46 +37,40 @@ public class Pizza {
         this.isAway = true;
     }
 
-    public String getBill(){
+    public String getBill() {
         // your code goes here
-        bill+="Base Price Of The Pizza:"+this.getPrice()+"\n";
-        if(this.isVeg)
-        {
-            if(this.isCheese)
-            {
-                this.price+=80;
-                bill+="Extra Cheese Added:80\n";
+        if (!bigenerated) {
+            bill += "Base Price Of The Pizza:" + this.getPrice() + "\n";
+            if (this.isVeg) {
+                if (this.isCheese) {
+                    this.price += 80;
+                    bill += "Extra Cheese Added: 80\n";
+                }
+                if (this.isTopping) {
+                    bill += "Extra Toppings Added: 70\n";
+                    this.price += 70;
+                }
+                if (this.isAway) {
+                    bill += "Paperbag Added: 20\n";
+                    this.price += 20;
+                }
+            } else {
+                if (this.isCheese) {
+                    this.price += 80;
+                    bill += "Extra Cheese Added: 80\n";
+                }
+                if (this.isTopping) {
+                    bill += "Extra Toppings Added: 120\n";
+                    this.price += 70;
+                }
+                if (this.isAway) {
+                    bill += "Paperbag Added: 20\n";
+                    this.price += 20;
+                }
             }
-            if(this.isTopping)
-            {
-                bill+="Extra Toppings Added:70\n";
-                this.price+=70;
-            }
-            if(this.isAway)
-            {
-                bill+="Paperbag Added:20\n";
-                this.price+=20;
-            }
+            bill += "Total Price: " + this.price + "\n";
+            bigenerated = true;
         }
-        else
-        {
-            if(this.isCheese)
-            {
-                this.price+=80;
-                bill+="Extra Cheese Added:80\n";
-            }
-            if(this.isTopping)
-            {
-                bill+="Extra Toppings Added:120\n";
-                this.price+=70;
-            }
-            if(this.isAway)
-            {
-                bill+="Paperbag Added:20\n";
-                this.price+=20;
-            }
-        }
-        bill+="Total Price:"+this.price+"\n";
-        return bill;
+            return bill;
     }
 }
