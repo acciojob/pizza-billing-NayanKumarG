@@ -9,6 +9,7 @@ public class Pizza {
     private boolean isTopping = false;
     private boolean isAway = false;
     private boolean bigenerated = false;
+    int count = 0;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -35,6 +36,7 @@ public class Pizza {
     public void addTakeaway(){
         // your code goes here
         this.isAway = true;
+        count++;
     }
 
     public String getBill() {
@@ -60,7 +62,7 @@ public class Pizza {
             }
             if (this.isAway) {
                 bill +="Paperbag Added: 20"+"\n";
-                this.price += 20;
+                this.price += 20*count;
             }
             bill += "Total Price: " + this.price + "\n";
             bigenerated = true;
